@@ -649,35 +649,19 @@
         el.includeXray.checked ? 'XRY' : null,
         el.includeOversizeXray.checked ? 'Oversize XRY package hole' : null
       ].filter(Boolean).join(', ') || 'None';
-
-      const lines = breakdown.map(item => '- ' + item.name + ': ' + (item.manual ? 'Manual quote required' : money(item.amount)) + ' (' + item.calc + ')').join('
-');
+      const lines = breakdown.map(item => '- ' + item.name + ': ' + (item.manual ? 'Manual quote required' : money(item.amount)) + ' (' + item.calc + ')').join('\n');
 
       el.summaryText.value =
-        'ERIXMAR LOCAL CHARGES - RATE SIMULATION
-' +
-        'Pickup ZIP: ' + zipText + '
-' +
-        'Pickup area: ' + regionText + '
-' +
-        'GW: ' + (gw || 0) + ' kg
-' +
-        'CW: ' + (cw || 0) + ' kg
-' +
-        'Pieces: ' + (pieces || 0) + '
-' +
-        'Invoice value: ' + money(invoiceValue) + '
-' +
-        'Selected services: ' + selectedServices + '
-
-' +
-        'BREAKDOWN
-' + lines + '
-
-' +
-        'TOTAL: ' + totalLabel + '
-
-' +
+        'ERIXMAR LOCAL CHARGES - RATE SIMULATION\n' +
+        'Pickup ZIP: ' + zipText + '\n' +
+        'Pickup area: ' + regionText + '\n' +
+        'GW: ' + (gw || 0) + ' kg\n' +
+        'CW: ' + (cw || 0) + ' kg\n' +
+        'Pieces: ' + (pieces || 0) + '\n' +
+        'Invoice value: ' + money(invoiceValue) + '\n' +
+        'Selected services: ' + selectedServices + '\n\n' +
+        'BREAKDOWN\n' + lines + '\n\n' +
+        'TOTAL: ' + totalLabel + '\n\n' +
         '* Rate simulation only. Official quotation and booking confirmation can be issued only in writing by Erixmar.';
     }
 
